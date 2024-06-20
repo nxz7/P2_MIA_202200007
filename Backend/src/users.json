@@ -1,0 +1,72 @@
+[
+  {
+    "username": "usuario1",
+    "password": "password1",
+    "type": "admin",
+    "email": "user1@example.com",
+    "name": "User One"
+  },
+  {
+    "username": "usuario2",
+    "password": "password2",
+    "type": "user",
+    "email": "user2@example.com",
+    "name": "User Two"
+  },
+  {
+    "username": "usuario3",
+    "password": "password3",
+    "type": "reg",
+    "email": "user3@example.com",
+    "name": "User Three"
+  },
+  {
+    "username": "usuario4",
+    "password": "password4",
+    "type": "user",
+    "email": "user4@example.com",
+    "name": "User Four"
+  },
+  {
+    "username": "usuario5",
+    "password": "password5",
+    "type": "user",
+    "email": "user5@example.com",
+    "name": "User Five"
+  },
+  {
+    "username": "usuario6",
+    "password": "password6",
+    "type": "reg",
+    "email": "user6@example.com",
+    "name": "User Six"
+  },
+  {
+    "username": "usuario7",
+    "password": "password7",
+    "type": "user",
+    "email": "user7@example.com",
+    "name": "User Seven"
+  },
+  {
+    "username": "usuario8",
+    "password": "password8",
+    "type": "user",
+    "email": "user8@example.com",
+    "name": "User Eight"
+  },
+  {
+    "username": "usuario9",
+    "password": "password9",
+    "type": "reg",
+    "email": "user9@example.com",
+    "name": "User Nine"
+  },
+  {
+    "username": "newuser",
+    "password": "newpassword",
+    "email": "newuser@example.com",
+    "name": "New User",
+    "type": "user"
+  }
+]

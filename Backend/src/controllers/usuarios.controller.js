@@ -1,37 +1,32 @@
-//aca se trabajo con lo sparametros mandados
-const usuarios = {
-    1: "usuario1",
-    2: "usuario2",
-    3: "usuario3",
-    4: "usuario4",
-    5: "natalia",
-    6: "usuario6",
-    7: "usuario7",
-    8: "usuario8",
-    9: "usuario9",
-    10: "usuario10"
-}
-
-
+const fs = require('fs');
+const path = require('path');
 
 const getUser = async (req, res) => {
-    const { id } = req.body;
-    const user = usuarios[id];
+    const { username, password } = req.body;
+    const usersFilePath = path.join(__dirname, '../users.json');
+    const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
+    const user = users.find(user => user.username === username && user.password === password);
+
     if (user) {
         res.json({
             status: true,
             msg: "si existe el usuario",
-            user
+            user: {
+                type: user.type,
+                username: user.username,
+                email: user.email,
+                name: user.name
+            }
         });
-    }else{
+    } else {
         res.json({
             status: false,
             msg: "el usuario no existe",
-            user
+            user: null
         });
     }
-}
+};
 
 module.exports = {
     getUser
-}
+};
