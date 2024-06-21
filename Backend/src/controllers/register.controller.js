@@ -21,6 +21,7 @@ const registerUser = async (req, res) => {
         return res.status(400).json({
             status: false,
             msg: 'ese username ya existe'
+            
         });
     }
 
@@ -30,7 +31,7 @@ const registerUser = async (req, res) => {
         password,
         email,
         name,
-        type: 'user'
+        type: 'turista'
     };
     users.push(newUser);
 

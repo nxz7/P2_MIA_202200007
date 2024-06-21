@@ -1,10 +1,11 @@
 // ACA SE CREA CON EXPRESS
 const express = require('express');
+const morgan = require('morgan');
 const app = express();
 const cors = require('cors');
 
 //limite
-
+app.use(morgan('dev'));
 app.use(express.json({limit: '50mb'}));
 app.use(cors())
 

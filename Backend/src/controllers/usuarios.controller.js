@@ -19,7 +19,7 @@ const getUser = async (req, res) => {
             }
         });
     } else {
-        res.json({
+        res.status(400).json({
             status: false,
             msg: "el usuario no existe",
             user: null

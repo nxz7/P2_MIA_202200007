@@ -9,7 +9,7 @@
   {
     "username": "usuario2",
     "password": "password2",
-    "type": "user",
+    "type": "turista",
     "email": "user2@example.com",
     "name": "User Two"
   },
@@ -23,14 +23,14 @@
   {
     "username": "usuario4",
     "password": "password4",
-    "type": "user",
+    "type": "turista",
     "email": "user4@example.com",
     "name": "User Four"
   },
   {
     "username": "usuario5",
     "password": "password5",
-    "type": "user",
+    "type": "turista",
     "email": "user5@example.com",
     "name": "User Five"
   },
@@ -44,14 +44,14 @@
   {
     "username": "usuario7",
     "password": "password7",
-    "type": "user",
+    "type": "turista",
     "email": "user7@example.com",
     "name": "User Seven"
   },
   {
     "username": "usuario8",
     "password": "password8",
-    "type": "user",
+    "type": "turista",
     "email": "user8@example.com",
     "name": "User Eight"
   },
@@ -67,6 +67,20 @@
     "password": "newpassword",
     "email": "newuser@example.com",
     "name": "New User",
-    "type": "user"
+    "type": "turista"
+  },
+  {
+    "username": "natalia",
+    "password": "mariel",
+    "email": "newuser@example.com",
+    "name": "New User",
+    "type": "turista"
+  },
+  {
+    "username": "jjj",
+    "password": "mariel",
+    "email": "newuser@example.com",
+    "name": "New User",
+    "type": "turista"
   }
 ]
