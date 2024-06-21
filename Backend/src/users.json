@@ -82,5 +82,40 @@
     "email": "newuser@example.com",
     "name": "New User",
     "type": "turista"
+  },
+  {
+    "username": "santiuser",
+    "password": "santiago",
+    "email": "user2@example.com",
+    "name": "santi",
+    "type": "turista"
+  },
+  {
+    "username": "celiastjames",
+    "password": "celia",
+    "email": "celia@example.com",
+    "name": "celia",
+    "type": "turista"
+  },
+  {
+    "username": "cecelia",
+    "password": "celia",
+    "email": "cecelia@example.com",
+    "name": "cecelia",
+    "type": "turista"
+  },
+  {
+    "username": "lanarey",
+    "password": "lana2",
+    "email": "lana@example.com",
+    "name": "lana",
+    "type": "turista"
+  },
+  {
+    "username": "lanarey2",
+    "password": "lana",
+    "email": "userlana2@example.com",
+    "name": "lana2",
+    "type": "turista"
   }
 ]

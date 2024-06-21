@@ -18,7 +18,7 @@ const registerUser = async (req, res) => {
     // ver si el username ya esta
     const existingUser = users.find(user => user.username === username);
     if (existingUser) {
-        return res.status(400).json({
+        return res.status(404).json({
             status: false,
             msg: 'ese username ya existe'
             
