@@ -57,7 +57,7 @@ export class RegistroComponent {
             error: (error: any )=>{
               console.log("ERROR EN EL REGISTRO");
               console.log(error);
-              alert("error en el resgitro2");
+              alert("ERROR EN EL REGISTRO - usuario ocupado o contraseña no coinciden");
             }
 
           });

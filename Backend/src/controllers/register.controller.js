@@ -1,10 +1,11 @@
+const { checkUserExists, insertData } = require('../config/db.mongo');
 const fs = require('fs');
 const path = require('path');
 
 const registerUser = async (req, res) => {
     const { username, password, confirmPassword, email, name } = req.body;
 
-    // ver si las contraseñas coinciden
+    // Check if passwords match
     if (password !== confirmPassword) {
         return res.status(400).json({
             status: false,
@@ -12,31 +13,36 @@ const registerUser = async (req, res) => {
         });
     }
 
-    const usersFilePath = path.join(__dirname, '../users.json');
-    const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
-
-    // ver si el username ya esta
-    const existingUser = users.find(user => user.username === username);
+    // Check if the username already exists in the MongoDB collection
+    const existingUser = await checkUserExists('Usuarios', username);
     if (existingUser) {
-        return res.status(404).json({
+        return res.status(400).json({
             status: false,
             msg: 'ese username ya existe'
-            
         });
     }
 
-    // agregar el usuario
+    // rl usuario
     const newUser = {
         username,
         password,
         email,
         name,
-        type: 'turista'
+        type: 'turista',
+        element: 'usuario'
     };
-    users.push(newUser);
 
-    // escribirñp
-    fs.writeFileSync(usersFilePath, JSON.stringify(users, null, 2), 'utf-8');
+    // aca se agrega y se mira el error
+    const result = await insertData('Usuarios', newUser);
+
+    if(result instanceof Error) {
+        return res.status(400).json(
+            {
+                status: false,
+                msg: 'Error al registrar usuario',
+                data: result
+            });
+    };
 
     res.json({
         status: true,
@@ -45,10 +51,12 @@ const registerUser = async (req, res) => {
             username: newUser.username,
             email: newUser.email,
             name: newUser.name,
-            type: newUser.type
+            type: newUser.type,
+            element: newUser.element
         }
     });
 };
+
 
 module.exports = {
     registerUser
