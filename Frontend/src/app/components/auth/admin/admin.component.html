@@ -1,0 +1,94 @@
+
+<body>
+    <h1>ADMINISTRADOR</h1>
+
+
+    <div class="section">
+        <h2>Registrar</h2>
+        <form action="/registro" method="post">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            
+            <label for="confirm-password">Confirm Password</label>
+            <input type="password" id="confirm-password" name="confirm-password" required>
+
+            <label for="type">Type</label>
+            <select id="type" name="type" required>
+                <option value="admin">admin</option>
+                <option value="turista">turista</option>
+                <option value="recepcionista">recepcionista</option>
+            </select>
+            
+            <button type="submit">Registrar</button>
+        </form>
+    </div>
+
+    <div class="section">
+        <h2>Eliminar Usuario</h2>
+        <form action="/eliminar-usuario" method="post">
+            <label for="userToDelete">Usuario a Eliminar</label>
+            <input type="text" id="userToDelete" name="userToDelete" required>
+            
+            <button type="submit">Eliminar</button>
+        </form>
+    </div>
+
+    <div class="section">
+        <h2>Agregar Viajes</h2>
+        <form action="/agregar-viaje" method="post">
+            <label for="agencia">Agencia</label>
+            <input type="text" id="agencia" name="agencia" required>
+            
+            <label for="origen">Origen</label>
+            <input type="text" id="origen" name="origen" required>
+            
+            <label for="destino">Destino</label>
+            <input type="text" id="destino" name="destino" required>
+            
+            <label for="dias">Días</label>
+            <input type="number" id="dias" name="dias" required>
+            
+            <label for="precio">Precio</label>
+            <input type="number" id="precio" name="precio" required>
+            
+            <button type="submit">Agregar</button>
+        </form>
+    </div>
+
+    <div class="section">
+        <h2>Agregar Autos</h2>
+        <form action="/agregar-auto" method="post">
+            <label for="agenciaAuto">Agencia</label>
+            <input type="text" id="agenciaAuto" name="agenciaAuto" required>
+            
+            <label for="marca">Marca</label>
+            <input type="text" id="marca" name="marca" required>
+            
+            <label for="placa">Placa</label>
+            <input type="text" id="placa" name="placa" required>
+            
+            <label for="modelo">Modelo</label>
+            <input type="text" id="modelo" name="modelo" required>
+            
+            <label for="precioAuto">Precio</label>
+            <input type="number" id="precioAuto" name="precioAuto" required>
+            
+            <label for="ciudad">Ciudad</label>
+            <input type="text" id="ciudad" name="ciudad" required>
+            
+            <button type="submit">Agregar</button>
+        </form>
+    </div>
+
+    <button class="logout-button" (click)="logout()">Cerrar Sesión</button>
+
+</body>

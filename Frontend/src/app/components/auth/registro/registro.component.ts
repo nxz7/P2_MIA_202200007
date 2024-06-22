@@ -17,6 +17,8 @@ import { UsuarioService } from '../../../services/usuario.service';
   templateUrl: './registro.component.html',
   styleUrl: './registro.component.scss'
 })
+
+
 export class RegistroComponent {
   constructor(
     private http: UsuarioService,
@@ -46,7 +48,7 @@ export class RegistroComponent {
                 //alerta
                 alert("usuario registrado:)");
                 //regrese al home
-                //this.router.navigate(["/usuarios"]);
+                this.router.navigate(["/login"]);
               }else {
                 alert("error en el resgitro1");
                 console.log("error en el registro")
@@ -72,7 +74,7 @@ export class RegistroComponent {
   }
 
   goBack() {
-    this.router.navigate(["/usuarios"]);
+    this.router.navigate(["/login"]);
   }
 
 }

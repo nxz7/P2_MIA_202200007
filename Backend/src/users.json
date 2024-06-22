@@ -16,7 +16,7 @@
   {
     "username": "usuario3",
     "password": "password3",
-    "type": "reg",
+    "type": "recepcionista",
     "email": "user3@example.com",
     "name": "User Three"
   },
@@ -37,7 +37,7 @@
   {
     "username": "usuario6",
     "password": "password6",
-    "type": "reg",
+    "type": "recepcionista",
     "email": "user6@example.com",
     "name": "User Six"
   },
@@ -58,7 +58,7 @@
   {
     "username": "usuario9",
     "password": "password9",
-    "type": "reg",
+    "type": "recepcionista",
     "email": "user9@example.com",
     "name": "User Nine"
   },
@@ -116,6 +116,27 @@
     "password": "lana",
     "email": "userlana2@example.com",
     "name": "lana2",
+    "type": "turista"
+  },
+  {
+    "username": "nataliamariel",
+    "password": "nataliamariel",
+    "email": "celia@example.com",
+    "name": "nataliamariel",
+    "type": "turista"
+  },
+  {
+    "username": "mini",
+    "password": "mini",
+    "email": "mini@example.com",
+    "name": "minions",
+    "type": "turista"
+  },
+  {
+    "username": "Pruebalog",
+    "password": "Pruebalog",
+    "email": "user3@example.com",
+    "name": "Pruebalog",
     "type": "turista"
   }
 ]

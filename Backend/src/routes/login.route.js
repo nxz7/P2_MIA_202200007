@@ -6,7 +6,7 @@ const validateAttributes = require('../middleware/validateAttributes');
 require('dotenv').config();
 
 const router = Router();
-const usuariosController = require('../controllers/usuarios.controller');
+const loginController = require('../controllers/login.controller');
 
 // Ruta principal
 router.get('/', (req, res) => {
@@ -22,7 +22,7 @@ router.get('/getUsers', (req, res) => {
     const users = JSON.parse(fs.readFileSync(usersFilePath, 'utf-8'));
     res.json({
         status: "1",
-        msg: "Lista de usuarios",
+        msg: "Lista de login",
         users
     });
 });
@@ -31,7 +31,7 @@ router.post('/getUser', [
     check('username', 'ingresar el username').not().isEmpty(),
     check('password', 'ingresar el password').not().isEmpty(),
     validateAttributes
-], usuariosController.getUser);
+], loginController.getUser);
 
 router.get('/getUser2/:username', (req, res) => {
     const { username } = req.params;

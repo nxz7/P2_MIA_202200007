@@ -20,7 +20,7 @@ app.get('/', (req, res) =>{
 
 //GET USER SE USA PARA VERIFICAR SI EL USUARIO EXISTE Y EL TIPO
 // solo la ruta de los usuarios 3200/usuarios
-app.use('/usuarios', require('./routes/usuarios.route.js'));
+app.use('/login', require('./routes/login.route.js'));
 
 //REGISTRAR A LOS USUARIOS TIPO USUARIO  3200/register
 app.use('/register', require('./routes/register.route.js'));
