@@ -1,45 +1,7 @@
-<h1>TURISTE</h1>
+<h1>TURISTA</h1>
 
 <div class="section">
     <h2>Autos</h2>
-    <div class="table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Agencia</th>
-                    <th>Origen</th>
-                    <th>Destino</th>
-                    <th>Días</th>
-                    <th>Vuelo</th>
-                    <th>Reservar</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Table rows dynamically generated -->
-                <tr>
-                    <td>Agencia 1</td>
-                    <td>Ciudad A</td>
-                    <td>Ciudad B</td>
-                    <td>3</td>
-                    <td>ABC123</td>
-                    <td><button class="button">Reservar</button></td>
-                </tr>
-                <tr>
-                    <td>Agencia 2</td>
-                    <td>Ciudad C</td>
-                    <td>Ciudad D</td>
-                    <td>5</td>
-                    <td>DEF456</td>
-                    <td><button class="button">Reservar</button></td>
-                </tr>
-                <!-- Add more rows as needed -->
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<div class="section">
-    <h2>Viajes</h2>
     <div class="table-container">
         <table>
             <thead>
@@ -49,34 +11,54 @@
                     <th>Placa</th>
                     <th>Modelo</th>
                     <th>Precio</th>
-                    <th>Ciudad</th>
+                    <th>ciudad</th>
                     <th>Reservar</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Table rows dynamically generated -->
-                <tr>
-                    <td>Agencia X</td>
-                    <td>Marca A</td>
-                    <td>ABC-123</td>
-                    <td>Modelo 1</td>
-                    <td>$100</td>
-                    <td>Ciudad Z</td>
-                    <td><button class="button">Reservar</button></td>
+                <tr *ngFor="let auto of autosItems">
+                    <td>{{ auto.agencia }}</td>
+                    <td>{{ auto.marca }}</td>
+                    <td>{{ auto.placa }}</td>
+                    <td>{{ auto.modelo }}</td>
+                    <td>{{ auto.precio }}</td>
+                    <td>{{ auto.ciudad }}</td>
+                    <td><button class="button" (click)="reservarAuto(auto)">Reservar</button></td>
                 </tr>
-                <tr>
-                    <td>Agencia Y</td>
-                    <td>Marca B</td>
-                    <td>DEF-456</td>
-                    <td>Modelo 2</td>
-                    <td>$120</td>
-                    <td>Ciudad W</td>
-                    <td><button class="button">Reservar</button></td>
-                </tr>
-                <!-- Add more rows as needed -->
             </tbody>
         </table>
     </div>
 </div>
 
+
+<div class="section">
+    <h2>Viajes</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Agencia</th>
+                    <th>Origen</th>
+                    <th>Destino</th>
+                    <th>Días</th>
+                    <th>Precio</th>
+                    <th>Reservar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let viaje of viajesItems">
+                    <td>{{ viaje.agencia }}</td>
+                    <td>{{ viaje.origen }}</td>
+                    <td>{{ viaje.destino }}</td>
+                    <td>{{ viaje.dias }}</td>
+                    <td>{{ viaje.precio }}</td>
+                    <td><button class="button" (click)="reservarViaje(viaje)">Reservar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<button class="button" (click)="actualizarTabla()">Actualizar</button>
 <button class="button" (click)="logout()">Cerrar Sesión</button>

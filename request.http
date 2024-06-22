@@ -1,9 +1,12 @@
 ### Obtener un usuario
-POST http://localhost:3200/login/getUser HTTP/1.1
+POST http://localhost:3200/turista/solicitudViaje HTTP/1.1
 Content-Type: application/json
 
 {
-    "username": "usuario1",
-    "password": "password1"
+    "agencia": "avianca",
+    "origen": "Guatemala",
+    "destino": "Los Angeles",
+    "dias": "15",
+    "precio": "3500",
+    "username": "natalia"
 }
-

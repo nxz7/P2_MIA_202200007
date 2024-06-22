@@ -25,5 +25,7 @@ app.use('/login', require('./routes/login.route.js'));
 //REGISTRAR A LOS USUARIOS TIPO USUARIO  3200/register
 app.use('/register', require('./routes/register.route.js'));
 
+app.use('/turista', require('./routes/turista.route.js'));
+
 
 module.exports = app;

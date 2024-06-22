@@ -35,4 +35,9 @@ export class UsuarioService {
     const route = this.api_url + url;
     return this.http.delete(route, { headers: this.headers });
   }
+
+  actualizarItems(url: string) {
+    const route = this.api_url + url;
+    return this.http.post(route, { headers: this.headers });
+  }
 }

@@ -53,7 +53,7 @@ export class LoginComponent {
                 alert('Bienvenido Recepcionista!!!');
                 break;
               case 'turista':
-                this.router.navigate(["/turista"]);
+                this.router.navigate(['/turista'], { queryParams: { username: data.user.username } });
                 alert('Bienvenido Turista!!!');
                 break;
               default:

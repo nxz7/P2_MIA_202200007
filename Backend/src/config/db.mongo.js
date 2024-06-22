@@ -62,8 +62,26 @@ const loginFind = async (collectionName, username, password) => {
     }
 };
 
+
+const getItemsByElement = async (collectionName, element) => {
+    const mongoClient = new MongoClient(uri);
+    try {
+        await mongoClient.connect();
+        const db = mongoClient.db(MONGO_DATABASE || 'Usuarios');
+        const collection = db.collection(collectionName);
+        const items = await collection.find({ element: element }).toArray();
+        return items;
+    } catch (error) {
+        console.error('Error getItemsByElement: ', error);
+        return error;
+    } finally {
+        await mongoClient.close();
+    }
+};
+
 module.exports = {
     insertData,
     checkUserExists,
-    loginFind
+    loginFind,
+    getItemsByElement
 };
