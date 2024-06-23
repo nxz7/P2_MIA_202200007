@@ -1,0 +1,93 @@
+.table-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #F6DCAC; /* Dark blue background */
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  color: #F6DCAC; /* Light yellow text */
+  width: 80%;
+  margin: auto;
+}
+
+h2 {
+  margin-bottom: 1rem;
+  color: #028391; /* Orange */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+th, td {
+  border: 2px solid #01204E; /* Teal border */
+  padding: 1rem; /* Increased padding for better readability */
+  text-align: center;
+}
+
+th {
+  background-color: #01204E; /* Dark blue background */
+  color: #ffffff; /* Orange text */
+  font-weight: bold; /* Bold font for headers */
+}
+
+td {
+  background-color: #0c808d;; /* Purple background */
+}
+
+.btn-aceptar {
+  background-color: #28a745; /* Green */
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem; /* Padding adjusted */
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.btn-rechazar {
+  background-color: #dc3545; /* Red */
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem; /* Padding adjusted */
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.btn-aceptar:hover, .btn-rechazar:hover {
+  opacity: 0.8;
+}
+
+.button {
+  background-color: #eebf9b; /* Orange */
+  color: #01204E; /* Dark blue */
+  padding: 0.7rem 1rem; /* Larger padding for more prominent button */
+  border: none;
+  border-radius: 4px;
+  align-items: center;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 200px;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Button hover effect */
+.button:hover {
+  background-color: #F6DCAC; /* Light yellow */
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .table-container {
+    width: 100%;
+    padding: 1rem;
+  }
+}

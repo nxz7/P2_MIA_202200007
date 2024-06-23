@@ -5,28 +5,24 @@
 
     <div class="section">
         <h2>Registrar</h2>
-        <form action="/registro" method="post">
+        <form [formGroup]="form_registro" (ngSubmit)="registrar()">
             <label for="name">Name</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name" formControlName="name" required>
             
             <label for="username">Username</label>
-            <input type="text" id="username" name="username" required>
+            <input type="text" id="username" name="username" formControlName="username"required>
             
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
+            <input type="email" id="email" name="email" formControlName="email" required>
             
             <label for="password">Password</label>
-            <input type="password" id="password" name="password" required>
+            <input type="password" id="password" name="password" formControlName="password" required>
             
             <label for="confirm-password">Confirm Password</label>
-            <input type="password" id="confirm-password" name="confirm-password" required>
+            <input type="password" id="confirm-password" name="confirm-password" formControlName="confirmPassword" required>
 
-            <label for="type">Type</label>
-            <select id="type" name="type" required>
-                <option value="admin">admin</option>
-                <option value="turista">turista</option>
-                <option value="recepcionista">recepcionista</option>
-            </select>
+            <label for="type">Type - turista/recepcionista</label>
+            <input type="text" id="type" name="type" formControlName="type" required>
             
             <button type="submit">Registrar</button>
         </form>
@@ -44,21 +40,21 @@
 
     <div class="section">
         <h2>Agregar Viajes</h2>
-        <form action="/agregar-viaje" method="post">
+        <form [formGroup]="form_viajes" (ngSubmit)="registrar_viajes()">
             <label for="agencia">Agencia</label>
-            <input type="text" id="agencia" name="agencia" required>
+            <input type="text" id="agencia" name="agencia" formControlName="agencia" required>
             
             <label for="origen">Origen</label>
-            <input type="text" id="origen" name="origen" required>
+            <input type="text" id="origen" name="origen" formControlName="origen" required>
             
             <label for="destino">Destino</label>
-            <input type="text" id="destino" name="destino" required>
+            <input type="text" id="destino" name="destino" formControlName="destino" required>
             
             <label for="dias">Días</label>
-            <input type="number" id="dias" name="dias" required>
+            <input type="number" id="dias" name="dias" formControlName="dias" required>
             
             <label for="precio">Precio</label>
-            <input type="number" id="precio" name="precio" required>
+            <input type="number" id="precio" name="precio" formControlName="precio" required>
             
             <button type="submit">Agregar</button>
         </form>
@@ -66,24 +62,24 @@
 
     <div class="section">
         <h2>Agregar Autos</h2>
-        <form action="/agregar-auto" method="post">
-            <label for="agenciaAuto">Agencia</label>
-            <input type="text" id="agenciaAuto" name="agenciaAuto" required>
+        <form [formGroup]="form_autos" (ngSubmit)="registrar_autos()">
+            <label for="agencia">Agencia</label>
+            <input type="text" id="agencia" name="agencia" formControlName="agencia" required>
             
             <label for="marca">Marca</label>
-            <input type="text" id="marca" name="marca" required>
+            <input type="text" id="marca" name="marca" formControlName="marca" required>
             
             <label for="placa">Placa</label>
-            <input type="text" id="placa" name="placa" required>
+            <input type="text" id="placa" name="placa" formControlName="placa" required>
             
             <label for="modelo">Modelo</label>
-            <input type="text" id="modelo" name="modelo" required>
+            <input type="text" id="modelo" name="modelo" formControlName="modelo" required>
             
-            <label for="precioAuto">Precio</label>
-            <input type="number" id="precioAuto" name="precioAuto" required>
+            <label for="precio">Precio</label>
+            <input type="text" id="precio" name="precio" formControlName="precio" required>
             
             <label for="ciudad">Ciudad</label>
-            <input type="text" id="ciudad" name="ciudad" required>
+            <input type="text" id="ciudad" name="ciudad" formControlName="ciudad"  required>
             
             <button type="submit">Agregar</button>
         </form>

@@ -1,1 +1,31 @@
-<p>recepcionista works!</p>
+<div class="table-container">
+  <h2>Solicitudes</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>agencia</th>
+        <th>marca/origen</th>
+        <th>placa/destino</th>
+        <th>modelo/dias</th>
+        <th>precio</th>
+        <th>ciudad</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of items">
+        <td>{{ getItemValue(item, 0) }}</td>
+        <td>{{ getItemValue(item, 1) }}</td>
+        <td>{{ getItemValue(item, 2) }}</td>
+        <td>{{ getItemValue(item, 3) }}</td>
+        <td>{{ getItemValue(item, 4) }}</td>
+        <td>{{ getItemValue(item, 5) }}</td>
+        <td>
+          <button class="btn-aceptar" (click)="aceptar(item)">Aceptar</button>
+          <button class="btn-rechazar" (click)="rechazar(item)">Rechazar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<button class="button" (click)="logout()">Cerrar Sesión</button>

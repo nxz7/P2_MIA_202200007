@@ -27,5 +27,8 @@ app.use('/register', require('./routes/register.route.js'));
 
 app.use('/turista', require('./routes/turista.route.js'));
 
+app.use('/recepcionista', require('./routes/recepcionista.route.js'));
+
+app.use('/admin', require('./routes/admin.route.js'));
 
 module.exports = app;

@@ -42,7 +42,7 @@ export class TuristaComponent {
         // que se crague al iniciar
         this.actualizarTabla();
       } else {
-        console.error('Username not found in queryParams');
+        console.error('Username no esta en -> queryParams');
         // Handle case where username is not found in queryParams
       }
     });
