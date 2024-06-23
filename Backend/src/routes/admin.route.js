@@ -8,6 +8,7 @@ router.post('/crearUsuarios', AdminController.crearUsuarios);
 router.post('/crearViajes', AdminController.crearViajes);
 
 router.post('/crearAutos', AdminController.crearAutos);
-//router.post('/rechazar', RecepcionistaController.Aceptar);
+
+router.post('/borrarUser', AdminController.borrarUser);
 
 module.exports = router;

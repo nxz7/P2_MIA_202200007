@@ -1,4 +1,4 @@
-const { checkUserExists, insertData } = require('../config/db.mongo');
+const { checkUserExists, insertData,deleteUsername } = require('../config/db.mongo');
 const fs = require('fs');
 const path = require('path');
 
@@ -138,9 +138,39 @@ const crearAutos = async (req, res) => {
 };
 
 
+const borrarUser = async (req, res) => {
+    try {
+        const { username} = req.body;
+        // Delete user with default element 'usuario'
+        const result = await deleteUsername('Usuarios', username, 'usuario');
+        
+        if(result instanceof Error) {
+            return res.status(400).json(
+                {
+                    status: false,
+                    msg: 'Error al borrar el usuario',
+                    data: result
+                });
+        };
+    
+        res.json({
+            status: true,
+            msg: "se ha borrado el usuario ",
+            user: {
+                username
+            }
+        });
+
+    } catch (error) {
+        console.error('Error borrarUser: ', error);
+        throw error;
+    }
+};
+
 
 module.exports = {
     crearUsuarios,
     crearViajes,
-    crearAutos
+    crearAutos,
+    borrarUser
 };

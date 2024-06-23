@@ -79,9 +79,31 @@ const getItemsByElement = async (collectionName, element) => {
     }
 };
 
+
+const deleteUsername = async (collectionName, username, element) => {
+    const mongoClient = new MongoClient(uri);
+    try {
+        await mongoClient.connect();
+        const db = mongoClient.db('Usuarios'); // Specify your database name
+        const collection = db.collection(collectionName);
+        
+        // Perform deletion based on username and element
+        const result = await collection.deleteOne({ username, element });
+        
+        return result;
+    } catch (error) {
+        console.error('Error deleteUsername: ', error);
+        return error;
+    } finally {
+        await mongoClient.close();
+    }
+};
+
+
 module.exports = {
     insertData,
     checkUserExists,
     loginFind,
-    getItemsByElement
+    getItemsByElement,
+    deleteUsername
 };

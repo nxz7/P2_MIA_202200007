@@ -1,13 +1,8 @@
 ### Obtener un usuario
-POST http://localhost:3200/admin/crearAutos HTTP/1.1
+POST http://localhost:3200/admin/borrarUser HTTP/1.1
 Content-Type: application/json
 
 {
-    "agencia": "agenciaPrueba",
-    "marca": "ferrari",
-    "placa": "cstjames",
-    "modelo": "1979",
-    "precio": "8200",
-    "ciudad":"italia"
+    "username": "reg"
 
 }
