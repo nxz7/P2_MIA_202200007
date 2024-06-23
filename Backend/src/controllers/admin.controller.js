@@ -1,4 +1,4 @@
-const { checkUserExists, insertData,deleteUsername } = require('../config/db.mongo');
+const { checkUserExists, getItemsByElement,insertData,deleteUsername,deleteItemByCriteria } = require('../config/db.mongo');
 const fs = require('fs');
 const path = require('path');
 
@@ -152,7 +152,15 @@ const borrarUser = async (req, res) => {
                     data: result
                 });
         };
-    
+        
+        if (!result) {
+            return res.status(400).json({
+                status: false,
+                msg: 'Error al borrar el usuario',
+                data: result
+            });
+        }
+
         res.json({
             status: true,
             msg: "se ha borrado el usuario ",
@@ -168,9 +176,100 @@ const borrarUser = async (req, res) => {
 };
 
 
+const borrarViajes = async (req, res) => {
+    try {
+        const { agencia, origen, destino, dias, precio } = req.body;
+        const criteria = { agencia, origen, destino, dias, precio, element: 'viajes' };
+        const result = await deleteItemByCriteria('Usuarios', criteria);
+
+        if (result instanceof Error) {
+            return res.status(400).json({
+                status: false,
+                msg: 'Error al borrar el viaje',
+                data: result
+            });
+        }
+
+        if (!result) {
+            return res.status(400).json({
+                status: false,
+                msg: 'Error al borrar el viaje',
+                data: result
+            });
+        }
+
+        res.json({
+            status: true,
+            msg: "se ha borrado el viaje",
+            criteria
+        });
+    } catch (error) {
+        console.error('Error borrarViajes: ', error);
+        throw error;
+    }
+};
+
+const borrarAutos = async (req, res) => {
+    try {
+        const { agencia, marca, placa, modelo, precio, ciudad } = req.body;
+        const criteria = { agencia, marca, placa, modelo, precio, ciudad, element: 'autos' };
+        const result = await deleteItemByCriteria('Usuarios', criteria);
+
+        if (result instanceof Error) {
+            return res.status(400).json({
+                status: false,
+                msg: 'Error al borrar el auto',
+                data: result
+            });
+        }
+
+        if (!result) {
+            return res.status(400).json({
+                status: false,
+                msg: 'Error al borrar el auto',
+                data: result
+            });
+        }
+
+        res.json({
+            status: true,
+            msg: "se ha borrado el auto",
+            criteria
+        });
+    } catch (error) {
+        console.error('Error borrarAutos: ', error);
+        throw error;
+    }
+};
+
+
+const TablaHistorial = async (req, res) => {
+    try {
+        //-------------> tiene las solicitudes
+        const items = await getItemsByElement('Usuarios', 'historial');
+
+        res.json({
+            status: true,
+            msg: 'Items encontrados exitosamente',
+            items: items
+        });
+        
+    } catch (error) {
+        console.error('Error Actualizar: ', error);
+        res.status(500).json({
+            status: false,
+            msg: 'Error al buscar items',
+            items: []
+        });
+    }
+};
+
 module.exports = {
     crearUsuarios,
     crearViajes,
     crearAutos,
-    borrarUser
+    borrarUser,
+    borrarAutos,
+    borrarViajes,
+    TablaHistorial
 };

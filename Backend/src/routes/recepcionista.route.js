@@ -5,8 +5,8 @@ const router = Router();
 
 router.post('/tabla', RecepcionistaController.TablaSolicitud);
 
-//router.post('/aceptar', RecepcionistaController.Aceptar);
+router.post('/aceptarSolicitud', RecepcionistaController.aceptarSolicitud);
 
-//router.post('/rechazar', RecepcionistaController.Aceptar);
+router.post('/borrarSolicitud', RecepcionistaController.borrarSolicitud);
 
 module.exports = router;

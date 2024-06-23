@@ -23,9 +23,7 @@ import { UsuarioService } from '../../../services/usuario.service';
 export class RecepcionistaComponent {
   items: any[] = [];
 
-  constructor(private usuarioService: UsuarioService,
-    private router: Router
-  ) {
+  constructor(private usuarioService: UsuarioService, private router: Router) {
     this.actualizarTabla();
   }
 
@@ -54,13 +52,42 @@ export class RecepcionistaComponent {
   }
 
   aceptar(item: any): void {
-    console.log('Aceptar:', item);
-    alert(`Solicitud aceptada para ${item.name || item.username}`);
+    const { username, agencia, precio } = item;
+    this.usuarioService.consult_post('/recepcionista/aceptarSolicitud', { username, agencia, precio }).subscribe({
+      next: (response: any) => {
+        if (response.status) {
+        alert(`Solicitud aceptada para ${username}`);
+        this.actualizarTabla();
+      }else {
+        console.error('error al aceptar la solicitu');
+        alert(`error al aceptar la solicitud`);
+      }
+         // Update the table after the action
+      },
+      error: (error) => {
+        console.error('error al aceptar la solicitu', error);
+      }
+    });
   }
 
   rechazar(item: any): void {
-    console.log('Rechazar:', item);
-    alert(`Solicitud rechazada para ${item.name || item.username}`);
+    const { username, agencia, precio } = item;
+    this.usuarioService.consult_post('/recepcionista/borrarSolicitud', { username, agencia, precio }).subscribe({
+      next: (response: any) => {
+
+        if (response.status) {
+
+        alert(`Solicitud rechazada para ${username}`);
+        this.actualizarTabla(); 
+      }else {
+        console.error('error al rechazar la solicitur');
+        alert(`error al rechazar la solicitur`);
+      }
+      },
+      error: (error) => {
+        console.error('Error en la solicitud de rechazo', error);
+      }
+    });
   }
 
   logout(): void {

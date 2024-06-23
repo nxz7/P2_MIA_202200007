@@ -90,7 +90,8 @@ const deleteUsername = async (collectionName, username, element) => {
         // Perform deletion based on username and element
         const result = await collection.deleteOne({ username, element });
         
-        return result;
+        return result.deletedCount > 0;
+
     } catch (error) {
         console.error('Error deleteUsername: ', error);
         return error;
@@ -99,11 +100,47 @@ const deleteUsername = async (collectionName, username, element) => {
     }
 };
 
+const deleteItemByCriteria = async (collectionName, criteria) => {
+    const mongoClient = new MongoClient(uri);
+    try {
+        await mongoClient.connect();
+        const db = mongoClient.db('Usuarios');
+        const collection = db.collection(collectionName);
+        const result = await collection.deleteOne(criteria);
+
+        return result.deletedCount > 0;
+    } catch (error) {
+        console.error('Error deleteItemByCriteria: ', error);
+        return error;
+    } finally {
+        await mongoClient.close();
+    }
+};
+
+
+const deleteSolicitud = async (collectionName, username, agencia, precio) => {
+    const mongoClient = new MongoClient(uri);
+    try {
+        await mongoClient.connect();
+        const db = mongoClient.db('Usuarios');
+        const collection = db.collection(collectionName);
+        const result = await collection.deleteOne({ element: 'solicitud', username, agencia, precio });
+
+        return result.deletedCount > 0;
+    } catch (error) {
+        console.error('Error deleteSolicitud: ', error);
+        return false;
+    } finally {
+        await mongoClient.close();
+    }
+};
 
 module.exports = {
     insertData,
     checkUserExists,
     loginFind,
     getItemsByElement,
-    deleteUsername
+    deleteUsername,
+    deleteItemByCriteria,
+    deleteSolicitud
 };

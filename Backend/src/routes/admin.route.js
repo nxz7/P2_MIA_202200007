@@ -11,4 +11,11 @@ router.post('/crearAutos', AdminController.crearAutos);
 
 router.post('/borrarUser', AdminController.borrarUser);
 
+router.post('/borrarViajes', AdminController.borrarViajes);
+
+router.post('/borrarAutos', AdminController.borrarAutos);
+
+router.post('/TablaHistorial', AdminController.TablaHistorial);
+
+//TablaHistorial
 module.exports = router;

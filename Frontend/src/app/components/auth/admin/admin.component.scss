@@ -102,3 +102,32 @@ h1 {
     color: #01204E; /* Dark blue */
     margin-bottom: 20px;
 }
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #FEAE6F; /* Orange */
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #F6DCAC; /* Light yellow */
+    color: #01204E; /* Dark blue */
+}
+
+table th {
+    background-color: #F6DCAC; /* Light yellow */
+}
+
+table tr:nth-child(even) {
+    background-color: #F6DCAC; /* Light yellow */
+}
+
+table tr:hover {
+    background-color: #FEAE6F; /* Orange */
+    color: #01204E; /* Dark blue */
+}
