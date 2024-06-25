@@ -4,7 +4,7 @@ import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterOutlet, RouterModule } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UsuarioService } from '../../../services/usuario.service';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-recepcionista',
@@ -30,7 +30,7 @@ export class RecepcionistaComponent {
   actualizarTabla(): void {
     this.usuarioService.consult_post('/recepcionista/tabla', {}).subscribe({
       next: (response: any) => {
-        alert("TABLA ACTUALIZADA");
+        Swal.fire("TABLA ACTUALIZADA");
         if (response.status) {
           this.items = response.items.map((item: any) => {
             const { solicitud, ...rest } = item;
@@ -56,11 +56,11 @@ export class RecepcionistaComponent {
     this.usuarioService.consult_post('/recepcionista/aceptarSolicitud', { username, agencia, precio }).subscribe({
       next: (response: any) => {
         if (response.status) {
-        alert(`Solicitud aceptada para ${username}`);
+          Swal.fire(`Solicitud aceptada para ${username}`);
         this.actualizarTabla();
       }else {
         console.error('error al aceptar la solicitu');
-        alert(`error al aceptar la solicitud`);
+        Swal.fire(`error al aceptar la solicitud`);
       }
          // Update the table after the action
       },
@@ -77,11 +77,11 @@ export class RecepcionistaComponent {
 
         if (response.status) {
 
-        alert(`Solicitud rechazada para ${username}`);
+          Swal.fire(`Solicitud rechazada para ${username}`);
         this.actualizarTabla(); 
       }else {
         console.error('error al rechazar la solicitur');
-        alert(`error al rechazar la solicitur`);
+        Swal.fire(`error al rechazar la solicitur`);
       }
       },
       error: (error) => {

@@ -4,6 +4,8 @@ import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterOutlet, RouterModule } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UsuarioService } from '../../../services/usuario.service';
+import Swal from 'sweetalert2';
+
 
 
 
@@ -49,29 +51,29 @@ export class AdminComponent {
                 if (data.status === true){
                   console.log("USUARIO REGISTRADO!");
                   //alerta
-                  alert("usuario registrado:)");
+                  Swal.fire("usuario registrado:)");
                   //regrese al home
                   //this.router.navigate(["/login"]);
                 }else {
-                  alert("error en el resgitro1");
+                  Swal.fire("error en el resgitro1");
                   console.log("error en el registro")
                 }
               },
               error: (error: any )=>{
                 console.log("ERROR EN EL REGISTRO");
                 console.log(error);
-                alert("ERROR EN EL REGISTRO - usuario ocupado o contraseña no coinciden");
+                Swal.fire("ERROR EN EL REGISTRO - usuario ocupado o contraseña no coinciden");
               }
   
             });
         }else {
           console.log("contraseñas no coinciden")
-          alert("contraseñas no coinciden");
+          Swal.fire("contraseñas no coinciden");
         }
   
       }else  {
         console.log("FORMULARIO INCOMPLETO");
-        alert("Formulario incompleto");
+        Swal.fire("Formulario incompleto");
       }
   
     }
@@ -96,25 +98,25 @@ export class AdminComponent {
                 if (data.status === true){
                   console.log("Viaje registrado!");
                   //alerta
-                  alert("Viaje registrado!");
+                  Swal.fire("Viaje registrado!");
                   //regrese al home
                   //this.router.navigate(["/login"]);
                 }else {
-                  alert("error en el resgitro1");
+                  Swal.fire("error en el resgitro1");
                   console.log("error en el registro")
                 }
               },
               error: (error: any )=>{
                 console.log("ERROR EN EL REGISTRO");
                 console.log(error);
-                alert("ERROR EN EL REGISTRO - asegurese de llenar los espacios indicados");
+                Swal.fire("ERROR EN EL REGISTRO - asegurese de llenar los espacios indicados");
               }
   
             });
   
       }else  {
         console.log("FORMULARIO INCOMPLETO");
-        alert("Formulario incompleto");
+        Swal.fire("Formulario incompleto");
       }
   
     }
@@ -140,25 +142,25 @@ registrar_autos(){
             if (data.status === true){
               console.log("AUTO registrado!");
               //alerta
-              alert("AUTO registrado!");
+              Swal.fire("AUTO registrado!");
               //regrese al home
               //this.router.navigate(["/login"]);
             }else {
-              alert("error en el resgitro del auto (1)");
+              Swal.fire("error en el resgitro del auto (1)");
               console.log("error en el registro")
             }
           },
           error: (error: any )=>{
             console.log("ERROR EN EL REGISTRO");
             console.log(error);
-            alert("ERROR EN EL REGISTRO - asegurese de llenar los espacios indicados");
+            Swal.fire("ERROR EN EL REGISTRO - asegurese de llenar los espacios indicados");
           }
 
         });
 
   }else  {
     console.log("FORMULARIO INCOMPLETO");
-    alert("Formulario incompleto");
+    Swal.fire("Formulario incompleto");
   }
 
 }
@@ -177,20 +179,20 @@ eliminar_usuario() {
       next: (data: any) => {
         if (data.status === true) {
           console.log("Usuario eliminado!");
-          alert("Usuario eliminado!");
+          Swal.fire("Usuario eliminado!");
         } else {
-          alert("Error al eliminar usuario");
+          Swal.fire("Error al eliminar usuario");
           console.log("Error al eliminar usuario");
         }
       },
       error: (error: any) => {
         console.log("Error en la solicitud", error);
-        alert("Error en la solicitud");
+        Swal.fire("Error en la solicitud");
       }
     });
   } else {
     console.log("Formulario incompleto");
-    alert("Formulario incompleto");
+    Swal.fire("Formulario incompleto");
   }
 }
 
@@ -214,25 +216,25 @@ eliminar_viajes(){
             if (data.status === true){
               console.log("Viaje eliminado!");
               //alerta
-              alert("Viaje eliminado!");
+              Swal.fire("Viaje eliminado!");
               //regrese al home
               //this.router.navigate(["/login"]);
             }else {
-              alert("error al eliminar (no existe)- revisar la escritura");
+              Swal.fire("error al eliminar (no existe)- revisar la escritura");
               console.log("error al eliminar - revisar la escritura");
             }
           },
           error: (error: any )=>{
             console.log("error al eliminar - revisar la escritura");
             console.log(error);
-            alert("ERROR EN EL REGISTRO - asegurese de llenar los espacios indicados - revisar la escritura");
+            Swal.fire("ERROR EN EL REGISTRO - asegurese de llenar los espacios indicados - revisar la escritura");
           }
 
         });
 
   }else  {
     console.log("FORMULARIO INCOMPLETO");
-    alert("Formulario incompleto");
+    Swal.fire("Formulario incompleto");
   }
 
 }
@@ -259,25 +261,25 @@ eliminar_autos(){
             if (data.status === true){
               console.log("AUTO eliminado!");
               //alerta
-              alert("AUTO eliminado!");
+              Swal.fire("AUTO eliminado!");
               //regrese al home
               //this.router.navigate(["/login"]);
             }else {
-              alert("error al eliminar (no existe)- revisar la escritura");
+              Swal.fire("error al eliminar (no existe)- revisar la escritura");
               console.log("error al eliminar auto")
             }
           },
           error: (error: any )=>{
             console.log("ERROR AL ELIMINAR");
             console.log(error);
-            alert("ERROR AL ELIMINAR - asegurese de llenar los espacios indicados");
+            Swal.fire("ERROR AL ELIMINAR - asegurese de llenar los espacios indicados");
           }
 
         });
 
   }else  {
     console.log("FORMULARIO INCOMPLETO");
-    alert("Formulario incompleto");
+    Swal.fire("Formulario incompleto");
   }
 
 }

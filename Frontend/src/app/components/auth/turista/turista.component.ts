@@ -6,7 +6,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { UsuarioService } from '../../../services/usuario.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-turista',
@@ -38,7 +38,7 @@ export class TuristaComponent {
       this.username = params['username'] || null;
       if (this.username) {
         console.log('Username from queryParams:', this.username);
-        alert(this.username)
+        //Swal.fire(this.username)
         // que se crague al iniciar
         this.actualizarTabla();
       } else {
@@ -57,7 +57,7 @@ export class TuristaComponent {
       
       next: (response: any) => {
         // llenar tablas
-        alert("TABLA ACTUALIZADA");
+        Swal.fire("TABLA ACTUALIZADA");
         if (response.status) {
           response.itemz.forEach((item: any) => { // itemz
             if (item.element === 'autos') { // element
@@ -94,17 +94,17 @@ export class TuristaComponent {
     };
 
     console.log(this.username);
-    alert(this.username);
+    //alert(this.username);
 
     this.usuarioService.consult_post('/turista/solicitudViaje', dataToPost).subscribe({
       next: (response: any) => {
         // Handle success response if needed
         console.log('Reserva realizada con éxito:', response);
-        alert('solicitud realizada con éxito :)');
+        Swal.fire('solicitud realizada con éxito :)');
       },
       error: (error: any) => {
         console.error('Error al realizar la solicitud:', error);
-        alert('Error al realizar la solicitud :( ');
+        Swal.fire('Error al realizar la solicitud :( ');
       }
     });
   }
@@ -127,17 +127,17 @@ reservarAuto(auto: any): void {
   };
 
   console.log(this.username);
-  alert(this.username);
+  //alert(this.username);
 
   this.usuarioService.consult_post('/turista/solicitudAuto', dataToPost).subscribe({
     next: (response: any) => {
       // Handle success response if needed
       console.log('solicitud realizada con éxito:)', response);
-      alert('solicitud realizada con éxito :)');
+      Swal.fire('solicitud realizada con éxito :)');
     },
     error: (error: any) => {
       console.error('Error al realizar la solicitud:', error);
-      alert('Error al realizar la reserva');
+      Swal.fire('Error al realizar la reserva');
     }
   });
 }

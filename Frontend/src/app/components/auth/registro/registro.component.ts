@@ -4,6 +4,7 @@ import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterOutlet, RouterModule } from '@angular/router';
 import { FormGroup, FormControl } from '@angular/forms';
 import { UsuarioService } from '../../../services/usuario.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -46,29 +47,29 @@ export class RegistroComponent {
               if (data.status === true){
                 console.log("USUARIO REGISTRADO!");
                 //alerta
-                alert("usuario registrado:)");
+                Swal.fire("usuario registrado:)");
                 //regrese al home
                 this.router.navigate(["/login"]);
               }else {
-                alert("error en el resgitro1");
+                Swal.fire("error en el resgitro1");
                 console.log("error en el registro")
               }
             },
             error: (error: any )=>{
               console.log("ERROR EN EL REGISTRO");
               console.log(error);
-              alert("ERROR EN EL REGISTRO - usuario ocupado o contraseña no coinciden");
+              Swal.fire("ERROR EN EL REGISTRO - usuario ocupado o contraseña no coinciden");
             }
 
           });
       }else {
         console.log("contraseñas no coinciden")
-        alert("contraseñas no coinciden");
+        Swal.fire("contraseñas no coinciden");
       }
 
     }else  {
       console.log("FORMULARIO INCOMPLETO");
-      alert("Formulario incompleto");
+      Swal.fire("Formulario incompleto");
     }
 
   }
