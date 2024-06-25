@@ -164,6 +164,36 @@ registrar_autos(){
 }
 
 
+//-------------------eliminar usuaio
+
+form_eliminarUsuario = new FormGroup({
+  username: new FormControl("", Validators.required)
+});
+
+eliminar_usuario() {
+  if (this.form_eliminarUsuario.valid) {
+    const username = this.form_eliminarUsuario.value.username;
+    this.http.consult_post("/admin/borrarUser", { username }).subscribe({
+      next: (data: any) => {
+        if (data.status === true) {
+          console.log("Usuario eliminado!");
+          alert("Usuario eliminado!");
+        } else {
+          alert("Error al eliminar usuario");
+          console.log("Error al eliminar usuario");
+        }
+      },
+      error: (error: any) => {
+        console.log("Error en la solicitud", error);
+        alert("Error en la solicitud");
+      }
+    });
+  } else {
+    console.log("Formulario incompleto");
+    alert("Formulario incompleto");
+  }
+}
+
 //------------------------eliminar Viajes ------------
 
 form_eliminarViajes= new FormGroup({

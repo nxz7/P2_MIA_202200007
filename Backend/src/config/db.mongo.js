@@ -10,7 +10,7 @@ const {
 
 
 //const uri = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOST}`;
-const uri = `mongodb://root:M1A2024.@localhost:27017`;
+const uri = `mongodb://root:M1A2024.@192.168.0.8:27017`;
 
 const insertData = async(database, data) => {
     console.log('uri', uri);
@@ -62,12 +62,12 @@ const loginFind = async (collectionName, username, password) => {
     }
 };
 
-
+//no funciona
 const getItemsByElement = async (collectionName, element) => {
     const mongoClient = new MongoClient(uri);
     try {
         await mongoClient.connect();
-        const db = mongoClient.db(MONGO_DATABASE || 'Usuarios');
+        const db = mongoClient.db( 'Usuarios');
         const collection = db.collection(collectionName);
         const items = await collection.find({ element: element }).toArray();
         return items;

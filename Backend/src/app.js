@@ -6,6 +6,12 @@ const cors = require('cors');
 
 //limite
 app.use(morgan('dev'));
+app.use(cors({
+    origin: '*',
+    methods: 'GET, POST, PUT, DELETE',
+    allowedHeaders: 'Content-Type, Authorization'
+}));
+
 app.use(express.json({limit: '50mb'}));
 app.use(cors())
 
