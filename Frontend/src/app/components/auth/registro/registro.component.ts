@@ -23,6 +23,7 @@ import Swal from 'sweetalert2';
 export class RegistroComponent {
   imagen: any = null ;
   path: any = '';
+  showImage: boolean = false;
 
   constructor(
     private http: UsuarioService,
@@ -50,11 +51,12 @@ export class RegistroComponent {
           this.http.consult_post("/register/register", this.form_registro.value).subscribe({
             next:(data: any)=>{
               if (data.status === true){
+                this.showImage = true;
                 console.log("USUARIO REGISTRADO!");
                 //alerta
                 Swal.fire("usuario registrado:)");
                 //regrese al home
-                this.router.navigate(["/login"]);
+                //this.router.navigate(["/login"]);
               }else {
                 Swal.fire("error en el resgitro1");
                 console.log("error en el registro")
@@ -86,7 +88,12 @@ export class RegistroComponent {
   onFileSelected(event: any) {
     this.imagen = event.target.files[0];
     if (this.imagen) {
-      this.form_registro.patchValue({ path: this.imagen.name });
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.path = reader.result;
+        this.form_registro.patchValue({ path: this.imagen.name });
+      };
+      reader.readAsDataURL(this.imagen);
     }
   }
 

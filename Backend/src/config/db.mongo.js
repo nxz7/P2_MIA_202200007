@@ -10,7 +10,7 @@ const {
 
 
 //const uri = `mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOST}`;
-const uri = `mongodb://root:M1A2024.@192.168.0.25:27017`;
+const uri = `mongodb://root:M1A2024.@54.197.205.241:27017`;
 
 const insertData = async(database, data) => {
     console.log('uri', uri);
