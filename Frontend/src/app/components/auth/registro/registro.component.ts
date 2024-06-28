@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterOutlet, RouterModule } from '@angular/router';
@@ -21,6 +21,9 @@ import Swal from 'sweetalert2';
 
 
 export class RegistroComponent {
+  imagen: any = null ;
+  path: any = '';
+
   constructor(
     private http: UsuarioService,
     private router: Router
@@ -28,6 +31,8 @@ export class RegistroComponent {
   ){}
 
   form_registro= new FormGroup({
+    path: new FormControl(''),
+    imagen: new FormControl(''),
     name: new FormControl("", Validators.required),
     username: new FormControl("", Validators.required),
     email: new FormControl("", Validators.required),
@@ -76,6 +81,13 @@ export class RegistroComponent {
 
   goBack() {
     this.router.navigate(["/login"]);
+  }
+
+  onFileSelected(event: any) {
+    this.imagen = event.target.files[0];
+    if (this.imagen) {
+      this.form_registro.patchValue({ path: this.imagen.name });
+    }
   }
 
 }

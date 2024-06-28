@@ -1,5 +1,5 @@
 ### Obtener un usuario
-POST http://192.168.0.8:3200/admin/borrarUser HTTP/1.1
+POST http://192.168.0.25:3200/admin/borrarUser HTTP/1.1
 Content-Type: application/json
 
 {

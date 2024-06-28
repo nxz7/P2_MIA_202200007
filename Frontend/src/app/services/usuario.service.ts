@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from '../../environments/environment';
+import { firstValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -40,4 +41,5 @@ export class UsuarioService {
     const route = this.api_url + url;
     return this.http.post(route, { headers: this.headers });
   }
+
 }

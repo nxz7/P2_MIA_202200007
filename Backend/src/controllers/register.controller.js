@@ -1,10 +1,11 @@
 const { checkUserExists, insertData } = require('../config/db.mongo');
+const { uploadFile } = require('../config/bucket');
 const fs = require('fs');
 const path = require('path');
 
 const registerUser = async (req, res) => {
     const { username, password, confirmPassword, email, name } = req.body;
-
+//imagen, path
     // Check if passwords match
     if (password !== confirmPassword) {
         return res.status(400).json({
@@ -35,6 +36,9 @@ const registerUser = async (req, res) => {
     // aca se agrega y se mira el error
     const result = await insertData('Usuarios', newUser);
 
+    //--------------------
+    
+//---------------------
     if(result instanceof Error) {
         return res.status(400).json(
             {
