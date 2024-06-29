@@ -11,7 +11,7 @@
         (change)="onFileSelected($event)"
         required>
 
-      <img *ngIf="showImage && path" [src]="path" alt="Selected Image" style="max-width: 200px; margin-top: 10px;"/>
+      <img *ngIf="ruta_aws" [src]="ruta_aws" alt="" style="max-width: 200px; margin-top: 10px;"/>
 
       <label for="name">Name</label>
       <input type="text" id="name" formControlName="name" required>

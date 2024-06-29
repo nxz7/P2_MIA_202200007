@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component,ChangeDetectorRef} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterOutlet, RouterModule } from '@angular/router';
@@ -21,13 +21,15 @@ import Swal from 'sweetalert2';
 
 
 export class RegistroComponent {
-  imagen: any = null ;
-  path: any = '';
-  showImage: boolean = false;
+
+  imagen: any = '';
+  imagen_path: any = '';
+  ruta_aws:any = '';
 
   constructor(
     private http: UsuarioService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef 
     
   ){}
 
@@ -48,12 +50,25 @@ export class RegistroComponent {
     debugger;
     if (this.form_registro.valid)  {
       if (this.form_registro.value.password === this.form_registro.value.confirmPassword)  {
+
+//------------------prueba
+const index = this.imagen_path.indexOf(",");
+this.imagen_path = this.imagen_path.slice(index + 1);
+this.form_registro.value.imagen = this.imagen_path;
+this.form_registro.value.path = this.imagen.name;
+
+//------------
+
+
           this.http.consult_post("/register/register", this.form_registro.value).subscribe({
             next:(data: any)=>{
               if (data.status === true){
-                this.showImage = true;
+
                 console.log("USUARIO REGISTRADO!");
+                this.ruta_aws = data.image;
+                this.cdr.detectChanges();
                 //alerta
+                console.log(data.image);
                 Swal.fire("usuario registrado:)");
                 //regrese al home
                 //this.router.navigate(["/login"]);
@@ -85,16 +100,26 @@ export class RegistroComponent {
     this.router.navigate(["/login"]);
   }
 
-  onFileSelected(event: any) {
+
+
+  onFileSelected(event: any){
+    // base64!!!!!!!!1111
     this.imagen = event.target.files[0];
-    if (this.imagen) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.path = reader.result;
-        this.form_registro.patchValue({ path: this.imagen.name });
-      };
-      reader.readAsDataURL(this.imagen);
+    const reader = new FileReader();
+    reader.onload = (event:any) => {
+      this.imagen_path = event.target.result;
     }
+    reader.readAsDataURL(this.imagen);
+  }
+
+  encodeFileAsBase64(file:any){
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.addEventListener('loadend', () =>{
+        resolve(reader.result);
+      });
+      reader.readAsDataURL(file);
+    });
   }
 
 }

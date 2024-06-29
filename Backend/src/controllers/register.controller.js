@@ -1,10 +1,11 @@
 const { checkUserExists, insertData } = require('../config/db.mongo');
 const { uploadFile } = require('../config/bucket');
+const { uploadFile2 } = require('../config/bucket');
 const fs = require('fs');
 const path = require('path');
 
 const registerUser = async (req, res) => {
-    const { username, password, confirmPassword, email, name } = req.body;
+    const { imagen, path, username, password, confirmPassword, email, name } = req.body;
 //imagen, path
     // Check if passwords match
     if (password !== confirmPassword) {
@@ -13,8 +14,13 @@ const registerUser = async (req, res) => {
             msg: 'LA CONTRASEÑA NO COINCIDE'
         });
     }
+//---------------------------- pRUEBA
+    await uploadFile2(path, imagen);
+    const ruta_aws = `https://appweb-202200007-p2.s3.amazonaws.com/${path}`;
 
-    // Check if the username already exists in the MongoDB collection
+//------------------------------------------
+
+    // VER SI EXISTE
     const existingUser = await checkUserExists('Usuarios', username);
     if (existingUser) {
         return res.status(400).json({
@@ -51,6 +57,7 @@ const registerUser = async (req, res) => {
     res.json({
         status: true,
         msg: 'SE HA REGISTRADO CORRECTAMENTE EL USUARIO',
+        image: ruta_aws,
         user: {
             username: newUser.username,
             email: newUser.email,
